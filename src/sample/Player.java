@@ -1,23 +1,18 @@
 package sample;
 
+abstract public class Player {
+    private Board.disk color;
 
-public class Player {
-    private Board.disk disk;
+    // the player choose his next move in his turn .
+    abstract Point chooseStep(UserInterface userInterface);
 
-    public Player(Board.disk d) {
-        this.disk = d;
+    //contructor.
+    public Player(Board.disk d){
+        this.color = d;
     }
 
-    /**
-     * the player choose his next move in his turn .
-     * @return - point.
-     */
-    public Point chooseStep(UserInterface userInterface) {
-        Point p = userInterface.choosePoint();
-        return p;
-    }
-
+    //get disk
     public Board.disk getDisk() {
-        return disk;
+        return this.color;
     }
 }
