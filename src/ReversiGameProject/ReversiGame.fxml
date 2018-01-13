@@ -1,8 +1,24 @@
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.layout.GridPane?>
-
-<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.control.Label?>
-<GridPane fx:controller="ReversiGameProject.ReversiGameController"
-          xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10">
-</GridPane>
+<?import javafx.scene.text.Text?>
+
+
+<HBox xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="ReversiGameProject.ReversiBoardController" fx:id="root" spacing="10">
+
+        <GridPane>
+            <Label text="Current player:"
+                   GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+            <Text fx:id="firstPlayerScoreString"
+                   GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+            <Text fx:id="secondPlayerScoreString"
+                   GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+            <Text fx:id="currentPlayer"
+                  GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+            <Text fx:id="firstPlayerScore"
+                  GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+            <Text fx:id="secondPlayerScore"
+                  GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+        </GridPane>
+
+</HBox>

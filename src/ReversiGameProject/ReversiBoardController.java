@@ -22,7 +22,7 @@ public class ReversiBoardController extends GridPane {
         this.firstPlayer = new HumanPlayer(Board.disk.firstPlayer, this, Color.BLACK);
         this.secondPlayer = new HumanPlayer(Board.disk.secondPlayer, this, Color.WHITE);
         GameLogic logic = new StandardGameLogic();
-        UserInterface display = new GuiUserInterface();
+        UserInterface display = new GuiUserInterface(this);
         ReversiGame game = new ReversiGame(this.board, this.firstPlayer, this.secondPlayer,
                 logic, display);
         FXMLLoader fxmlLoader = new
