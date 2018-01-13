@@ -2,7 +2,25 @@ package ReversiGameProject;
 
 import java.util.Vector;
 
-public class Point {
+public class Point implements Comparable{
+
+    @Override
+    public int compareTo(Object other) {
+        Point p = (Point)other;
+        int returnVal =0;
+
+        if (p.x > x)
+            returnVal = -1;
+        else if (x > p.x)
+            returnVal = 1;
+        else if (p.y > y)
+            returnVal = -1;
+        else if (y > p.y)
+            returnVal = 1;
+        else if((this.x == p.x) && (this.y == p.y))
+            returnVal = 0;
+        return  returnVal;
+    }
 
     private int x;
     private int y;
@@ -44,7 +62,8 @@ public class Point {
      * @return return true is the points are equal, false otherwise.
      */
     // equals -- return true is the points are equal, false otherwise
-    public boolean equals(Point other) {
+    public boolean equals(Object p) {
+        Point other = (Point)p;
         if ((this.x == other.x) && (this.y == other.y)) {
             return true;
         }

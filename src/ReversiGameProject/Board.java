@@ -14,20 +14,20 @@ public class Board {
      */
     public Board(int rowSize,int colSize) {
 
-        this.rowSize = rowSize;
-        this.colSize = colSize;
-        this.array = new disk[rowSize][colSize];
+        this.rowSize = rowSize + 1;
+        this.colSize = colSize + 1;
+        this.array = new disk[this.rowSize][this.colSize];
 
         //Initializes all the cells in the array with a space character.
-        for (int i = 0; i < this.rowSize; i++) {
-            for (int j = 0; j < this.colSize; j++) {
+        for (int i = 1; i < this.rowSize; i++) {
+            for (int j = 1 ; j < this.colSize; j++) {
                 array[i][j] = disk.empty;
             }
         }
 
         //Boot the cells of the players.
-        int x =(this.rowSize)/2;
-        int y = (this.colSize)/2;
+        int x =((this.rowSize)/2);
+        int y = ((this.colSize)/2);
         array[x][y] = disk.secondPlayer;
         array[x+1][y+1] = disk.secondPlayer;
         array[x][y+1] = disk.firstPlayer;
@@ -47,8 +47,8 @@ public class Board {
         disk[][] arrToCopy = board.getArray();
 
         //deep copy
-        for (int i = 0; i < this.rowSize; i++) {
-            for (int j = 0; j < this.colSize ; j++) {
+        for (int i = 1; i < this.rowSize; i++) {
+            for (int j = 1; j < this.colSize ; j++) {
                 array[i][j] = arrToCopy[i][j];
             }
         }

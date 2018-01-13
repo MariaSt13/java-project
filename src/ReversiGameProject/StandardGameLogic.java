@@ -63,7 +63,7 @@ public class StandardGameLogic implements GameLogic{
                     pointsMap.get(point).addAll(v);
                 }
                 else{
-                    pointsMap.get(point).addAll(v);
+                    pointsMap.put(point,v);
                 }
                 return point;
             }

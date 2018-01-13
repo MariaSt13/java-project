@@ -12,6 +12,7 @@ public class ReversiBoardController extends GridPane {
     private Board board;
     private Player firstPlayer;
     private Player secondPlayer;
+    private ReversiGame game;
 
     /**
      * constructor.
@@ -20,10 +21,10 @@ public class ReversiBoardController extends GridPane {
     public ReversiBoardController(Board b){
         this.board = b;
         this.firstPlayer = new HumanPlayer(Board.disk.firstPlayer, this, Color.BLACK);
-        this.secondPlayer = new HumanPlayer(Board.disk.secondPlayer, this, Color.WHITE);
+        this.secondPlayer = new HumanPlayer(Board.disk.secondPlayer, this, Color.BLUE);
         GameLogic logic = new StandardGameLogic();
         UserInterface display = new GuiUserInterface(this);
-        ReversiGame game = new ReversiGame(this.board, this.firstPlayer, this.secondPlayer,
+        game = new ReversiGame(this.board, this.firstPlayer, this.secondPlayer,
                 logic, display);
         FXMLLoader fxmlLoader = new
                 FXMLLoader(getClass().getResource("ReversiBoard.fxml"));
@@ -38,8 +39,6 @@ public class ReversiBoardController extends GridPane {
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }
-
-        game.play();
     }
 
 
@@ -52,25 +51,34 @@ public class ReversiBoardController extends GridPane {
         int height = (int)this.getPrefHeight();
         int width = (int)this.getPrefWidth();
 
-        int cellHeight = height / board.getRowSize();
-        int cellWidth = width / board.getColSize();
+        int cellHeight = height / (board.getRowSize() -1);
+        int cellWidth = width / (board.getColSize() -1);
 
         //loop go over board matrix
-        for (int i = 0; i < board.getRowSize(); i++) {
-            for (int j = 0; j < board.getColSize(); j++) {
+        for (int i = 1; i < board.getRowSize(); i++) {
+            for (int j = 1; j < board.getColSize(); j++) {
 
                 Board.disk currentDisk = board.getArray()[i][j];
 
                 //draw cell
-                this.add(new Rectangle(cellWidth, cellHeight, Color.WHITE), j, i);
+                this.add(new Rectangle(cellWidth+1, cellHeight+1, Color.BLACK), j-1,i-1);
+                Rectangle rec  = new Rectangle(cellWidth, cellHeight, Color.LIGHTGREY);
+                this.add(rec, j-1, i-1);
 
+                //if the cell is empty
+                if (currentDisk == Board.disk.empty)
+                    rec.setOnMouseClicked(event -> {
+                        int y =GridPane.getColumnIndex(rec) + 1;
+                        int x = GridPane.getRowIndex(rec) + 1;
+                        game.playOneTurn(new Point(x,y),this);
+                    });
                 //if the cell is not empty
-                if (currentDisk != Board.disk.empty){
+                else {
                     if(currentDisk == Board.disk.firstPlayer){
-                        this.firstPlayer.draw(cellWidth, cellHeight,i,j);
+                        this.firstPlayer.draw(cellWidth, cellHeight,j-1,i-1);
                     }
-                    else{
-                        this.secondPlayer.draw(cellWidth, cellHeight,i,j);
+                    else if(currentDisk == Board.disk.secondPlayer){
+                        this.secondPlayer.draw(cellWidth, cellHeight,j-1,i-1);
                     }
                 }
             }

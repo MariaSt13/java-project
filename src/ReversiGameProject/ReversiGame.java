@@ -22,31 +22,28 @@ public class ReversiGame {
         this.gameLogic = gameLogic;
         this.hisTurn = this.blackPlayer;
         this.userInterface = display;
-        play();
     }
 
     // this function run the game.
-    public void play() {
-        Point step;
+    public void playOneTurn(Point step,ReversiBoardController r) {
+        boolean firstTry = true;
 
-        //running the game
-        while(!isGameOver()) {
-            boolean firstTry = true;
+        //print board and current player.
+        printCurrentBoard();
 
-            //print board and current player.
-            printCurrentBoard();
-
-            //get a vector of possible points and print it.
-            Vector<Point> v = this.gameLogic.returnValidMoves(this.hisTurn, this.gameBoard);
-            if(printPossibleMoves(v)) {
-                step = getStep(firstTry,v);
-
-                //makes the current player's choice and changes the next player's turn.
-                this.gameLogic.flipCells(this.hisTurn, step, gameBoard,false);
-            }
-            changeTurn();
+        //get a vector of possible points and print it.
+        Vector<Point> v = this.gameLogic.returnValidMoves(this.hisTurn, this.gameBoard);
+        if(!v.contains(step)) {
+            return;
         }
-        gameOver();
+        //makes the current player's choice and changes the next player's turn.
+        this.gameLogic.flipCells(this.hisTurn, step, gameBoard,false);
+
+        changeTurn();
+        r.draw();
+        if(isGameOver()){
+            gameOver();
+        }
     }
 
     /**
