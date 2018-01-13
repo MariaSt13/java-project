@@ -1,8 +1,16 @@
 package ReversiGameProject;
 
+import javafx.scene.layout.GridPane;
+
+import java.awt.event.MouseEvent;
 import java.util.Vector;
 
 public class GuiUserInterface implements  UserInterface {
+
+    private GridPane grid;
+    public GuiUserInterface(GridPane grid) {
+        this.grid =grid;
+    }
     @Override
     public void waiting() {
 
@@ -89,7 +97,5 @@ public class GuiUserInterface implements  UserInterface {
     }
 
     @Override
-    public Point choosePoint() {
-        return null;
-    }
+    public Point choosePoint() { return null;}
 }
