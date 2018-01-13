@@ -1,4 +1,4 @@
-package sample;
+package ReversiGameProject;
 
 abstract public class Player {
     private Board.disk color;
@@ -15,4 +15,6 @@ abstract public class Player {
     public Board.disk getDisk() {
         return this.color;
     }
+
+    public abstract void draw(int cellWidth, int cellHeight,int row,int col);
 }

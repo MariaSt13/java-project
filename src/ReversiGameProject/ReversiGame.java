@@ -1,4 +1,4 @@
-package sample;
+package ReversiGameProject;
 
 import java.util.Vector;
 

@@ -1,10 +1,10 @@
-package sample;
+package ReversiGameProject;
 
 public class Board {
 
     private int rowSize;
     private int colSize;
-    public enum disk {blackActor ,whiteActor , empty };
+    public enum disk {firstPlayer ,secondPlayer , empty };
     private disk[][] array;
 
     /**
@@ -29,10 +29,10 @@ public class Board {
         //Boot the cells of the players.
         int x =(this.rowSize)/2;
         int y = (this.colSize)/2;
-        array[x][y] = disk.whiteActor;
-        array[x+1][y+1] = disk.whiteActor;
-        array[x][y+1] = disk.blackActor;
-        array[x+1][y] = disk.blackActor;
+        array[x][y] = disk.secondPlayer;
+        array[x+1][y+1] = disk.secondPlayer;
+        array[x][y+1] = disk.firstPlayer;
+        array[x+1][y] = disk.firstPlayer;
     }
 
     /**
