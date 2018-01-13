@@ -11,9 +11,8 @@ public class Board {
      * constructor.
      * @param rowSize - number of rows.
      * @param colSize - number of columns.
-     * @param - userInterface -the type of userInterface.
      */
-    public Board(int rowSize,int colSize, UserInterface userInterface) {
+    public Board(int rowSize,int colSize) {
 
         this.rowSize = rowSize;
         this.colSize = colSize;

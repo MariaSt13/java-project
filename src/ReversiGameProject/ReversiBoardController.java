@@ -7,7 +7,7 @@ import javafx.scene.shape.Rectangle;
 
 import java.io.IOException;
 
-public class ReversiBoard extends GridPane {
+public class ReversiBoardController extends GridPane {
     private Board board;
     private Player firstPlayer;
     private Player secondPlayer;
@@ -16,14 +16,14 @@ public class ReversiBoard extends GridPane {
      * constructor.
      * @param b - board game.
      */
-    public ReversiBoard(Board b,Player firstPlayer, Player secondPlayer){
+    public ReversiBoardController(Board b, Player firstPlayer, Player secondPlayer){
         this.board = b;
         this.firstPlayer = firstPlayer;
         this.secondPlayer = secondPlayer;
         FXMLLoader fxmlLoader = new
                 FXMLLoader(getClass().getResource("ReversiBoard.fxml"));
 
-        //The ReversiBoard sets itself as both the root and the controller of the FXML document.
+        //The ReversiBoardController sets itself as both the root and the controller of the FXML document.
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
 

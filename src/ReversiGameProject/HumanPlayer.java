@@ -7,10 +7,11 @@ import javafx.scene.shape.Circle;
 
 public class HumanPlayer extends Player{
     private GridPane grid;
-    Color diskColor;
+    private Color diskColor;
 
-    public HumanPlayer(Board.disk d,GridPane grid) {
+    public HumanPlayer(Board.disk d,GridPane grid,Color diskColor) {
         super(d);
+        this.diskColor = diskColor;
         this.grid = grid;
     }
 
