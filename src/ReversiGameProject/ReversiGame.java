@@ -5,16 +5,16 @@ import java.util.Vector;
 public class ReversiGame {
 
     private Board gameBoard;
-    private HumanPlayer whitePlayer;
-    private HumanPlayer blackPlayer;
+    private Player whitePlayer;
+    private Player blackPlayer;
     private GameLogic gameLogic;
-    private HumanPlayer hisTurn;
+    private Player hisTurn;
     private UserInterface userInterface;
 
     /**
      * This function runs the game.
      */
-    public ReversiGame(Board gameBoard, HumanPlayer blackPlayer, HumanPlayer whitePlayer, GameLogic gameLogic,
+    public ReversiGame(Board gameBoard, Player blackPlayer, Player whitePlayer, GameLogic gameLogic,
                        UserInterface display) {
         this.gameBoard = gameBoard;
         this.whitePlayer = whitePlayer;

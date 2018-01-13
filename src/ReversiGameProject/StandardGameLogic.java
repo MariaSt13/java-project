@@ -16,7 +16,7 @@ public class StandardGameLogic implements GameLogic{
     /**
      * The function returns a vector with all possible steps for the player.
      */
-   public Vector<Point> returnValidMoves(HumanPlayer p , Board b) {
+   public Vector<Point> returnValidMoves(Player p , Board b) {
         Board.disk[][] array = b.getArray();
         Vector<Point> v =  new Vector<>();
         pointsMap.clear();
@@ -30,7 +30,7 @@ public class StandardGameLogic implements GameLogic{
         }
         return v;
     }
-    private Point ifReverseOpponentDisk(HumanPlayer player, Point p, Board b, int i, int j) {
+    private Point ifReverseOpponentDisk(Player player, Point p, Board b, int i, int j) {
         Board.disk[][] array = b.getArray();
         Point currentPoint = p;
         Vector<Point> v = new Vector<>();
@@ -79,7 +79,7 @@ public class StandardGameLogic implements GameLogic{
      * @param b - current board.
      * @param vec - vector of possible points.
      */
-    private void checkPoint(HumanPlayer player, Point p, Board b, Vector<Point> vec) {
+    private void checkPoint(Player player, Point p, Board b, Vector<Point> vec) {
         Board.disk[][] array = b.getArray();
         int x = p.getX();
         int y = p.getY();
@@ -122,7 +122,7 @@ public class StandardGameLogic implements GameLogic{
      * @param b - board.
      * @param updateMap - first update the map. (when return valid moves was not called before that.)
      */
-    public void flipCells(HumanPlayer player, Point newPoint, Board b, boolean updateMap) {
+    public void flipCells(Player player, Point newPoint, Board b, boolean updateMap) {
         if ( updateMap == true) {
             returnValidMoves(player, b);
         }

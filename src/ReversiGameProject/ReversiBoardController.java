@@ -5,6 +5,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
+import java.awt.event.MouseEvent;
 import java.io.IOException;
 
 public class ReversiBoardController extends GridPane {
@@ -16,10 +17,14 @@ public class ReversiBoardController extends GridPane {
      * constructor.
      * @param b - board game.
      */
-    public ReversiBoardController(Board b, Player firstPlayer, Player secondPlayer){
+    public ReversiBoardController(Board b){
         this.board = b;
-        this.firstPlayer = firstPlayer;
-        this.secondPlayer = secondPlayer;
+        this.firstPlayer = new HumanPlayer(Board.disk.firstPlayer, this, Color.BLACK);
+        this.secondPlayer = new HumanPlayer(Board.disk.secondPlayer, this, Color.WHITE);
+        GameLogic logic = new StandardGameLogic();
+        UserInterface display = new GuiUserInterface();
+        ReversiGame game = new ReversiGame(this.board, this.firstPlayer, this.secondPlayer,
+                logic, display);
         FXMLLoader fxmlLoader = new
                 FXMLLoader(getClass().getResource("ReversiBoard.fxml"));
 
@@ -33,6 +38,8 @@ public class ReversiBoardController extends GridPane {
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }
+
+        game.play();
     }
 
 
