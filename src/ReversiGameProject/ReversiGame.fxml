@@ -6,8 +6,8 @@
 <HBox xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="ReversiGameProject.ReversiGameController" fx:id="root" spacing="10">
     <VBox>
-        <Text fx:id="currentPlayer"/>
-        <Text fx:id="firstPlayerScore"/>
-        <Text fx:id="secondPlayerScore"/>
+        <Text fx:id="currentPlayer" translateY="5"/>
+        <Text fx:id="firstPlayerScore" translateY="7"/>
+        <Text fx:id="secondPlayerScore" translateY="9"/>
     </VBox>
 </HBox>

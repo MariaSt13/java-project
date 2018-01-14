@@ -39,6 +39,8 @@ public class ReversiGameController implements Initializable {
         reversiBoard = new ReversiBoardController(board);
         reversiBoard.setPrefWidth(400);
         reversiBoard.setPrefHeight(400);
+        reversiBoard.setTranslateX(5);
+        reversiBoard.setTranslateY(5);
         root.getChildren().add(0, reversiBoard);
         draw(new HumanPlayer(Board.disk.firstPlayer,reversiBoard ,Color.RED));
     }

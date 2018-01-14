@@ -68,7 +68,7 @@ public class ReversiBoardController extends GridPane {
                 //if the cell is empty
                 if (currentDisk == Board.disk.empty)
                     rec.setOnMouseClicked(event -> {
-                        int y =GridPane.getColumnIndex(rec) + 1;
+                        int y = GridPane.getColumnIndex(rec) + 1;
                         int x = GridPane.getRowIndex(rec) + 1;
                         game.playOneTurn(new Point(x,y),gameController);
                     });
