@@ -45,7 +45,7 @@ public class ReversiBoardController extends GridPane {
     /**
      * draw board,
      */
-    public void draw() {
+    public void draw(ReversiGameController gameController) {
         this.getChildren().clear();
 
         int height = (int)this.getPrefHeight();
@@ -70,7 +70,7 @@ public class ReversiBoardController extends GridPane {
                     rec.setOnMouseClicked(event -> {
                         int y =GridPane.getColumnIndex(rec) + 1;
                         int x = GridPane.getRowIndex(rec) + 1;
-                        game.playOneTurn(new Point(x,y),this);
+                        game.playOneTurn(new Point(x,y),gameController);
                     });
                 //if the cell is not empty
                 else {

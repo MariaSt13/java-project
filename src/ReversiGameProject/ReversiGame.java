@@ -25,7 +25,7 @@ public class ReversiGame {
     }
 
     // this function run the game.
-    public void playOneTurn(Point step,ReversiBoardController r) {
+    public void playOneTurn(Point step,ReversiGameController gameController) {
         boolean firstTry = true;
 
         //print board and current player.
@@ -40,7 +40,7 @@ public class ReversiGame {
         this.gameLogic.flipCells(this.hisTurn, step, gameBoard,false);
 
         changeTurn();
-        r.draw();
+        gameController.draw(this.hisTurn);
         if(isGameOver()){
             gameOver();
         }

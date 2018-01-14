@@ -1,14 +1,18 @@
 package ReversiGameProject;
 
+import javafx.scene.paint.Color;
+
 abstract public class Player {
-    private Board.disk color;
+    protected Board.disk color;
+    protected Color diskColor;
 
     // the player choose his next move in his turn .
     abstract Point chooseStep(UserInterface userInterface);
 
     //contructor.
-    public Player(Board.disk d){
+    public Player(Board.disk d,Color diskColor){
         this.color = d;
+        this.diskColor = diskColor;
     }
 
     //get disk
@@ -17,4 +21,6 @@ abstract public class Player {
     }
 
     public abstract void draw(int cellWidth, int cellHeight,int row,int col);
+
+    public Color getColor(){ return this.diskColor;}
 }
