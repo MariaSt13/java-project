@@ -4,7 +4,7 @@ public class Board {
 
     private int rowSize;
     private int colSize;
-    public enum disk {firstPlayer ,secondPlayer , empty };
+    public enum disk {firstPlayer ,secondPlayer , empty }
     private disk[][] array;
 
     /**

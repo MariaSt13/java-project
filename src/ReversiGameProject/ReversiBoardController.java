@@ -18,10 +18,10 @@ public class ReversiBoardController extends GridPane {
      * constructor.
      * @param b - board game.
      */
-    public ReversiBoardController(Board b){
+    public ReversiBoardController(Board b, Color firstColor, Color secondColor){
         this.board = b;
-        this.firstPlayer = new HumanPlayer(Board.disk.firstPlayer, this, Color.BLACK);
-        this.secondPlayer = new HumanPlayer(Board.disk.secondPlayer, this, Color.BLUE);
+        this.firstPlayer = new HumanPlayer(Board.disk.firstPlayer, this, firstColor);
+        this.secondPlayer = new HumanPlayer(Board.disk.secondPlayer, this, secondColor);
         GameLogic logic = new StandardGameLogic();
         UserInterface display = new GuiUserInterface(this);
         game = new ReversiGame(this.board, this.firstPlayer, this.secondPlayer,
