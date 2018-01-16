@@ -20,7 +20,7 @@ abstract public class Player {
         return this.color;
     }
 
-    public abstract void draw(int cellWidth, int cellHeight,int row,int col);
+    public abstract void draw(float cellWidth, float cellHeight,int row,int col);
 
     public Color getColor(){ return this.diskColor;}
 }

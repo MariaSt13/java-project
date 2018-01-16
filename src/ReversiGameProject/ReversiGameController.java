@@ -38,7 +38,6 @@ public class ReversiGameController implements Initializable {
 
     @FXML
     private VBox root;
-
     @FXML
     private HBox Hbox;
     @FXML

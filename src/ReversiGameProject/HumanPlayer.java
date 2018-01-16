@@ -24,7 +24,7 @@ public class HumanPlayer extends Player{
     /**
      * draw player disk.
      */
-    public void draw(int cellWidth, int cellHeight,int row,int col){
+    public void draw(float cellWidth, float cellHeight,int row,int col){
         double radius = Math.min(cellWidth,cellHeight) / 2;
         Circle circle = new Circle(radius,this.diskColor);
         this.grid.add(circle,row,col);

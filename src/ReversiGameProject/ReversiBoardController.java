@@ -53,8 +53,8 @@ public class ReversiBoardController extends GridPane {
         int height = (int)this.getPrefHeight();
         int width = (int)this.getPrefWidth();
 
-        int cellHeight = height / (board.getRowSize() -1);
-        int cellWidth = width / (board.getColSize() -1);
+        float cellHeight = height / (board.getRowSize() -1);
+        float cellWidth = width / (board.getColSize() -1);
 
         //loop go over board matrix
         for (int i = 1; i < board.getRowSize(); i++) {
@@ -63,7 +63,7 @@ public class ReversiBoardController extends GridPane {
                 Board.disk currentDisk = board.getArray()[i][j];
 
                 //draw cell
-                Rectangle rec  = new Rectangle(cellWidth-1, cellHeight-1, Color.LIGHTGREY);
+                Rectangle rec  = new Rectangle(cellWidth, cellHeight, Color.LIGHTGREY);
                 this.add(rec, j-1, i-1);
 
                 //if the cell is empty
