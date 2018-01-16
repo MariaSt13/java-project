@@ -7,9 +7,9 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ReversiGameProject.DefinitionController">
+<AnchorPane prefHeight="400.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ReversiGameProject.DefinitionController">
    <children>
-      <ChoiceBox fx:id="choiceBoxPlayer1" layoutX="62.0" layoutY="81.0" prefWidth="150.0" value="Black">
+      <ChoiceBox fx:id="choiceBoxPlayer1" layoutX="62.0" layoutY="66.0" prefWidth="150.0">
               <items>
                   <FXCollections fx:factory="observableArrayList">
                       <String fx:value="Black" />
@@ -23,17 +23,17 @@
                   </FXCollections>
               </items>
       </ChoiceBox>
-      <Label layoutX="61.0" layoutY="43.0" text="Player No.1 color:">
+      <Label layoutX="61.0" layoutY="27.0" text="Player No.1 color:">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <Label layoutX="61.0" layoutY="141.0" text="Player No.2 color:">
+      <Label layoutX="61.0" layoutY="125.0" text="Player No.2 color:">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <ChoiceBox fx:id="choiceBoxPlayer2" layoutX="62.0" layoutY="184.0" prefWidth="150.0" value="Black">
+      <ChoiceBox fx:id="choiceBoxPlayer2" layoutX="62.0" layoutY="168.0" prefWidth="150.0">
         <items>
            <FXCollections fx:factory="observableArrayList">
                <String fx:value="Black" />
@@ -47,17 +47,12 @@
            </FXCollections>
        </items>
       </ChoiceBox>
-      <Label layoutX="63.0" layoutY="251.0" text="Board size: (8-20)">
+      <Label layoutX="63.0" layoutY="223.0" text="Board size: ">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <TextField fx:id="size" layoutX="219.0" layoutY="250.0" prefHeight="27.0" prefWidth="38.0">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </TextField>
-      <Button layoutX="212.0" layoutY="310.0" mnemonicParsing="false" onAction="#save" prefHeight="39.0" prefWidth="159.0" text="Save">
+      <Button layoutX="133.0" layoutY="321.0" mnemonicParsing="false" onAction="#save" prefHeight="39.0" prefWidth="159.0" text="Save">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
@@ -65,5 +60,20 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
+      <ChoiceBox fx:id="choiceBoxSize" layoutX="62.0" layoutY="258.0" prefWidth="150.0">
+              <items>
+                  <FXCollections fx:factory="observableArrayList">
+                      <Integer fx:value="4" />
+                      <Integer fx:value="6" />
+                      <Integer fx:value="8" />
+                      <Integer fx:value="10" />
+                      <Integer fx:value="12" />
+                      <Integer fx:value="14" />
+                      <Integer fx:value="16" />
+                      <Integer fx:value="18" />
+                      <Integer fx:value="20" />
+                  </FXCollections>
+              </items>
+      </ChoiceBox>
    </children>
 </AnchorPane>

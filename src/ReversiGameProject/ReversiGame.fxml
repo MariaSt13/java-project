@@ -6,11 +6,12 @@
 
 <VBox fx:id="root" spacing="10" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="ReversiGameProject.ReversiGameController">
    <children>
-       <MenuBar fx:id="menuBar" prefHeight="39.0" prefWidth="600.0">
+       <MenuBar prefHeight="39.0" prefWidth="600.0">
            <menus>
                <Menu text="File">
                    <items>
-                       <MenuItem text="settings" onAction="#openSettings" fx:id="settings"/>
+                       <MenuItem text="Settings" onAction="#openSettings"/>
+                       <MenuItem text="Exit" onAction="#exitGame"/>
                    </items>
                </Menu>
            </menus>
@@ -18,9 +19,21 @@
        <HBox fx:id="Hbox">
            <VBox>
                <children>
-                   <Text fx:id="currentPlayer" translateY="5" />
-                   <Text fx:id="firstPlayerScore" translateY="7" />
-                   <Text fx:id="secondPlayerScore" translateY="9" />
+                   <Text fx:id="currentPlayer" translateY="5" translateX="30" >
+                       <font>
+                           <Font name="System Bold" size="13.0" />
+                       </font>
+                   </Text>
+                   <Text fx:id="firstPlayerScore" translateY="7" translateX="30">
+                       <font>
+                           <Font name="System Bold" size="13.0" />
+                       </font>
+                   </Text>
+                   <Text fx:id="secondPlayerScore" translateY="9" translateX="30">
+                       <font>
+                           <Font name="System Bold" size="13.0" />
+                       </font>
+                   </Text>
                </children>
            </VBox>
        </HBox>

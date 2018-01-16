@@ -13,12 +13,9 @@ public class ReadDefinitionFile {
     }
 
     public Map<String, String> readFile(String fileName) {
-        BufferedReader is = null;
+        BufferedReader is;
         try {
             is = new BufferedReader( new InputStreamReader( new FileInputStream(fileName)));
-            if (is == null) {
-
-            }
             String line;
             while ((line = is.readLine()) != null) {
                 String s[] = line.split(":");

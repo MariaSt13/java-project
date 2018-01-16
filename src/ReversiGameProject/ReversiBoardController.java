@@ -1,6 +1,7 @@
 package ReversiGameProject;
 
 import javafx.fxml.FXMLLoader;
+import javafx.scene.layout.Border;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
@@ -47,7 +48,8 @@ public class ReversiBoardController extends GridPane {
      */
     public void draw(ReversiGameController gameController) {
         this.getChildren().clear();
-
+        this.setStyle("-fx-background-color: Black; -fx-alignment: center; -fx-padding: 1; -fx-hgap: 1; -fx-vgap: 1;");
+        this.setSnapToPixel(false);
         int height = (int)this.getPrefHeight();
         int width = (int)this.getPrefWidth();
 
@@ -61,8 +63,7 @@ public class ReversiBoardController extends GridPane {
                 Board.disk currentDisk = board.getArray()[i][j];
 
                 //draw cell
-                this.add(new Rectangle(cellWidth+1, cellHeight+1, Color.BLACK), j-1,i-1);
-                Rectangle rec  = new Rectangle(cellWidth, cellHeight, Color.LIGHTGREY);
+                Rectangle rec  = new Rectangle(cellWidth-1, cellHeight-1, Color.LIGHTGREY);
                 this.add(rec, j-1, i-1);
 
                 //if the cell is empty
@@ -75,10 +76,10 @@ public class ReversiBoardController extends GridPane {
                 //if the cell is not empty
                 else {
                     if(currentDisk == Board.disk.firstPlayer){
-                        this.firstPlayer.draw(cellWidth, cellHeight,j-1,i-1);
+                        this.firstPlayer.draw(cellWidth-1, cellHeight-1,j-1,i-1);
                     }
                     else if(currentDisk == Board.disk.secondPlayer){
-                        this.secondPlayer.draw(cellWidth, cellHeight,j-1,i-1);
+                        this.secondPlayer.draw(cellWidth-1, cellHeight-1,j-1,i-1);
                     }
                 }
             }

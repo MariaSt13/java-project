@@ -19,6 +19,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.ResourceBundle;
 
+import static java.lang.System.exit;
+
 public class ReversiGameController implements Initializable {
     private final HashMap<Color, String> colorMap = new HashMap<Color, String>() {{
         put(Color.BLACK,"Black");
@@ -32,6 +34,7 @@ public class ReversiGameController implements Initializable {
     }};
     private Board board;
     private ReversiBoardController reversiBoard;
+    private Map<String,String> settings;
 
     @FXML
     private VBox root;
@@ -45,27 +48,22 @@ public class ReversiGameController implements Initializable {
     @FXML
     private Text secondPlayerScore;
 
-    @FXML
-    private MenuBar menuBar;
-    @FXML
-    private MenuItem settings;
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         ReadDefinitionFile file = new ReadDefinitionFile();
-        Map<String,String> map = file.readFile("DefinitionFile.txt");
+        this.settings = file.readFile("DefinitionFile.txt");
         Color firstColor;
         Color secondColor;
         int boardSize;
-        if (map.isEmpty()) {
+        if (settings.isEmpty()) {
             firstColor = Color.BLACK;
             secondColor = Color.WHITE;
             boardSize = 8;
         }
         else {
-            boardSize = Integer.parseInt(map.get("size"));
-            firstColor = Color.web(map.get("color1"));
-            secondColor = Color.web(map.get("color2"));
+            boardSize = Integer.parseInt(settings.get("size"));
+            firstColor = Color.web(settings.get("color1"));
+            secondColor = Color.web(settings.get("color2"));
         }
         this.board= new Board(boardSize,boardSize);
         reversiBoard = new ReversiBoardController(board, firstColor, secondColor);
@@ -79,15 +77,15 @@ public class ReversiGameController implements Initializable {
 
     void draw(Player hisTurn){
         currentPlayer.setText("Current player:  " + this.colorMap.get(hisTurn.getColor()));
-        firstPlayerScore.setText("First player score:  " +
+        firstPlayerScore.setText(settings.get("color1") + " player score:  " +
                 Integer.toString(board.numOfPlayerDisks(Board.disk.firstPlayer)));
-        secondPlayerScore.setText("Second player score:  " +
+        secondPlayerScore.setText(settings.get("color2") + " player score:  " +
                 Integer.toString(board.numOfPlayerDisks(Board.disk.secondPlayer)));
         reversiBoard.draw(this);
     }
 
     @FXML
-    void openSettings(ActionEvent event) {
+    private void openSettings(ActionEvent event) {
         try {
             FXMLLoader settingsLoader = new FXMLLoader(getClass().getResource("Definition.fxml"));
             Parent parent = settingsLoader.load();
@@ -100,5 +98,9 @@ public class ReversiGameController implements Initializable {
             System.out.println("Error in opening settings");
             e.printStackTrace();
         }
+    }
+    @FXML
+    private void exitGame(ActionEvent event) {
+        exit(0);
     }
 }
