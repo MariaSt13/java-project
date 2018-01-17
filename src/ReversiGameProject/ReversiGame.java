@@ -54,13 +54,14 @@ public class ReversiGame {
 
             changeTurn();
             gameController.draw(this.hisTurn);
+
+            //check if the game is over
+            if(isGameOver()){
+               gameOver(gameController);
+            }
         } else {
             gameOver(gameController);
         }
-        //check if the game is over
-       // if(isGameOver()){
-         //   gameOver(gameController);
-       // }
     }
 
     /**
