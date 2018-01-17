@@ -42,11 +42,14 @@ public class Point implements Comparable{
     }
 
     /**
-     * check if the points are equal.
+     * Check if the points are equal.
      * @param p - other point that we are comparing to.
      * @return return true is the points are equal, false otherwise.
      */
     public boolean equals(Object p) {
+        if (p.getClass() != this.getClass()) {
+            return false;
+        }
         Point other = (Point)p;
         if ((this.x == other.x) && (this.y == other.y)) {
             return true;

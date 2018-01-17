@@ -13,7 +13,7 @@ public class StandardGameLogic implements GameLogic{
     private Map<Point,Vector<Point>> pointsMap;
 
     /**
-     * constructor.
+     * Constructor.
      */
     public StandardGameLogic() {
         pointsMap = new TreeMap<>();
@@ -26,7 +26,6 @@ public class StandardGameLogic implements GameLogic{
      * @return vector of points.
      */
    public Vector<Point> returnValidMoves(Player p , Board b) {
-        Board.disk[][] array = b.getArray();
         Vector<Point> v =  new Vector<>();
         pointsMap.clear();
 
@@ -41,7 +40,7 @@ public class StandardGameLogic implements GameLogic{
     }
 
     /**
-     * The function get a points and check if selecting this point will reverse the opponent disks.
+     * The function gets a points and check if selecting this point will reverse the opponent disks.
      * @param player - current player.
      * @param p - the point that is checked.
      * @param b - current board.
@@ -92,7 +91,7 @@ public class StandardGameLogic implements GameLogic{
     }
 
     /**
-     * The function get a point and check if it is a valid point (possible move) for the player.
+     * The function gets a point and check if it is a valid point (possible move) for the player.
      * @param player - current player.
      * @param p - the point that is checked.
      * @param b - current board.
@@ -110,10 +109,10 @@ public class StandardGameLogic implements GameLogic{
             for (int i = -1; i < 2 ; i++) {
                 for (int j = -1; j < 2 ; j++) {
 
-                    Point cuurentNeighbor = new Point(x+i,y+j);
+                    Point currentNeighbor = new Point(x+i,y+j);
 
                     //If the point is not outside the boundaries of the matrix
-                    if( b.pointIsInRange(cuurentNeighbor)){
+                    if( b.pointIsInRange(currentNeighbor)){
 
                         //If it is cell of the opposing player
                         if(array[x+i][y+j] != Board.disk.noPlayer && array[x+i][y+j] != player.getDisk()){

@@ -27,12 +27,11 @@ public class ReversiBoardController extends GridPane {
         this.firstPlayer = new HumanPlayer(Board.disk.firstPlayer, this, firstColor);
         this.secondPlayer = new HumanPlayer(Board.disk.secondPlayer, this, secondColor);
 
-        //create game logic and user interface.
+        //create game logic.
         GameLogic logic = new StandardGameLogic();
 
         //create a new game.
-        game = new ReversiGame(this.board, this.firstPlayer, this.secondPlayer,
-                logic);
+        game = new ReversiGame(this.board, this.firstPlayer, this.secondPlayer, logic);
 
         //load fxml.
         FXMLLoader fxmlLoader = new
@@ -55,14 +54,13 @@ public class ReversiBoardController extends GridPane {
 
 
     /**
-     * draw board.
+     * Draw board.
      * @param gameController - Controller of the game.
      */
     public void draw(ReversiGameController gameController) {
         this.getChildren().clear();
         this.setStyle("-fx-background-color: Black; -fx-alignment: center; " +
                 "-fx-padding: 1; -fx-hgap: 1; -fx-vgap: 1;");
-        this.setSnapToPixel(false);
         int height = (int)this.getPrefHeight();
         int width = (int)this.getPrefWidth();
 

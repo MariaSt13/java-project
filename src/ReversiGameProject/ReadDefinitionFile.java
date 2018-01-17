@@ -5,8 +5,8 @@ import java.util.Map;
 import java.util.TreeMap;
 
 /**
- * This class open a definition file
- * and create a map of definitions.
+ * This class opens a definition file
+ * and creates a map of definitions.
  */
 public class ReadDefinitionFile {
 
@@ -20,9 +20,9 @@ public class ReadDefinitionFile {
     }
 
     /**
-     * This function get a definition file name
-     * and create map of definitions.
-     * return empty map if there is no file
+     * This function gets a definition file name
+     * and creates a map of definitions.
+     * Return empty map if there is no file.
      * @param fileName - name of the definition file.
      * @return map of definitions.
      */

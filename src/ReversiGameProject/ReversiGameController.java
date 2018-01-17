@@ -115,7 +115,7 @@ public class ReversiGameController implements Initializable {
     }
 
     /**
-     * This function open settings window.
+     * This function opens settings window.
      * @param event - ActionEvent object.
      */
     @FXML
@@ -135,7 +135,7 @@ public class ReversiGameController implements Initializable {
     }
 
     /**
-     * This function exit from the game.
+     * This function closes the game.
      * @param event - ActionEvent object.
      */
     @FXML

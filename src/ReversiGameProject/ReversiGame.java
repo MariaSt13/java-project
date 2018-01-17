@@ -16,7 +16,7 @@ public class ReversiGame {
     private Player hisTurn;
 
     /**
-     * constructor.
+     * Constructor.
      * @param gameBoard - the board game.
      * @param firstPlayer - the first player.
      * @param secondPlayer - the second player.
@@ -31,36 +31,40 @@ public class ReversiGame {
     }
 
     /**
-     * This function run one turn.
+     * This function runs one turn.
      * @param step - current step.
      * @param gameController - Controller of the game.
      */
     public void playOneTurn(Point step,ReversiGameController gameController) {
-        //get a vector of possible points and print it.
-        Vector<Point> v = this.gameLogic.returnValidMoves(this.hisTurn, this.gameBoard);
+        if (!isGameOver()) {
 
-        //if the vector is not empty.
-        if(v.size() != 0){
+            //get a vector of possible points and print it.
+            Vector<Point> v = this.gameLogic.returnValidMoves(this.hisTurn, this.gameBoard);
 
-            //check if the step is valid
-            if(!v.contains(step)) {
-                return;
+            //if the vector is not empty.
+            if (v.size() != 0) {
+
+                //check if the step is valid
+                if (!v.contains(step)) {
+                    return;
+                }
+                //makes the current player's choice and changes the next player's turn.
+                this.gameLogic.flipCells(this.hisTurn, step, gameBoard, false);
             }
-            //makes the current player's choice and changes the next player's turn.
-            this.gameLogic.flipCells(this.hisTurn, step, gameBoard,false);
-        }
 
-        changeTurn();
-        gameController.draw(this.hisTurn);
-
-        //check if the game is over
-        if(isGameOver()){
+            changeTurn();
+            gameController.draw(this.hisTurn);
+        } else {
             gameOver(gameController);
         }
+        //check if the game is over
+       // if(isGameOver()){
+         //   gameOver(gameController);
+       // }
     }
 
     /**
-     *  print the winner.
+     * Show the winner.
      * @param controller - game controller.
      */
     private void gameOver(ReversiGameController controller){
@@ -68,7 +72,7 @@ public class ReversiGame {
         int countFirst = this.gameBoard.numOfPlayerDisks(this.firstPlayer.getDisk());
         int countSecond = this.gameBoard.numOfPlayerDisks(this.secondPlayer.getDisk());
 
-        //prints the winning player.
+        //show the winning player.
         if(countFirst > countSecond){
            controller.gameOver(Board.disk.firstPlayer);
         }
@@ -85,7 +89,7 @@ public class ReversiGame {
      * if the game is over return true, else return false.
      * @return boolean.
      */
-    public boolean isGameOver() {
+    private boolean isGameOver() {
         //if the there is no noPlayer cells return true.
         if(this.gameBoard.ifBoardIsFull()){
             return true;
