@@ -19,17 +19,17 @@
        <HBox fx:id="Hbox">
            <VBox>
                <children>
-                   <Text fx:id="currentPlayer" translateY="5" translateX="30" >
+                   <Text fx:id="currentPlayer" translateY="10" translateX="40" >
                        <font>
                            <Font name="System Bold" size="13.0" />
                        </font>
                    </Text>
-                   <Text fx:id="firstPlayerScore" translateY="7" translateX="30">
+                   <Text fx:id="firstPlayerScore" translateY="12" translateX="40">
                        <font>
                            <Font name="System Bold" size="13.0" />
                        </font>
                    </Text>
-                   <Text fx:id="secondPlayerScore" translateY="9" translateX="30">
+                   <Text fx:id="secondPlayerScore" translateY="14" translateX="40">
                        <font>
                            <Font name="System Bold" size="13.0" />
                        </font>

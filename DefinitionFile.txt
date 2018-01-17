@@ -1,3 +1,0 @@
-firstPlayerColor: Red
-secondPlayerColor: Pink
-size: 16

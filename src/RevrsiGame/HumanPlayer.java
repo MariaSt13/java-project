@@ -1,5 +1,8 @@
 package RevrsiGame;
 
+import javafx.geometry.HPos;
+import javafx.geometry.Pos;
+import javafx.geometry.VPos;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
@@ -33,5 +36,6 @@ public class HumanPlayer extends Player {
         double radius = Math.min(cellWidth,cellHeight) / 2;
         Circle circle = new Circle(radius,this.diskColor);
         this.grid.add(circle,row,col);
+        GridPane.setHalignment(circle, HPos.CENTER);
     }
 }

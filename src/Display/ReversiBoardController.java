@@ -72,8 +72,8 @@ public class ReversiBoardController extends GridPane {
         int width = (int)this.getPrefWidth();
 
         //calculate height and width.
-        float cellHeight = height / (board.getRowSize() -1);
-        float cellWidth = width / (board.getColSize() -1);
+        float cellHeight = height / (board.getRowSize() -1) -1;
+        float cellWidth = width / (board.getColSize() -1) -1;
 
         //loop go over board matrix
         for (int i = 1; i < board.getRowSize(); i++) {
@@ -96,12 +96,12 @@ public class ReversiBoardController extends GridPane {
                 //if the cell is not "noPlayer"
                 else {
                     if(currentDisk == Board.disk.firstPlayer){
-                        this.firstPlayer.draw(cellWidth-1,
-                                cellHeight-1,j-1,i-1);
+                        this.firstPlayer.draw(cellWidth-2,
+                                cellHeight-2,j-1,i-1);
                     }
                     else if(currentDisk == Board.disk.secondPlayer){
-                        this.secondPlayer.draw(cellWidth-1,
-                                cellHeight-1,j-1,i-1);
+                        this.secondPlayer.draw(cellWidth-2,
+                                cellHeight-2,j-1,i-1);
                     }
                 }
             }
