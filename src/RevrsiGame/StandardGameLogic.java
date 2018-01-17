@@ -1,4 +1,4 @@
-package ReversiGameProject;
+package RevrsiGame;
 
 import java.util.Map;
 import java.util.TreeMap;
@@ -8,7 +8,7 @@ import java.util.Vector;
  * This class implements GameLogic and encapsulates
  * the standard logic of the reversi game.
  */
-public class StandardGameLogic implements GameLogic{
+public class StandardGameLogic implements GameLogic {
 
     private Map<Point,Vector<Point>> pointsMap;
 

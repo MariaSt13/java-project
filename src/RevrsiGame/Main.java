@@ -1,4 +1,4 @@
-package ReversiGameProject;
+package RevrsiGame;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -14,7 +14,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         try{
-            VBox root = (VBox)FXMLLoader.load(getClass().getResource("ReversiGame.fxml"));
+            VBox root = (VBox)FXMLLoader.load(getClass().getResource("/Display/ReversiGame.fxml"));
             primaryStage.setTitle("Reversi Game");
             primaryStage.setScene(new Scene(root, 600, 480));
             primaryStage.show();

@@ -1,4 +1,8 @@
-package ReversiGameProject;
+package Display;
+import RevrsiGame.Board;
+import RevrsiGame.HumanPlayer;
+import RevrsiGame.Player;
+import RevrsiGame.ReadDefinitionFile;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;

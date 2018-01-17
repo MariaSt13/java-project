@@ -1,4 +1,4 @@
-package ReversiGameProject;
+package RevrsiGame;
 
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
@@ -8,7 +8,7 @@ import javafx.scene.shape.Circle;
  * This class extends player class and represent
  * a human player who plays on this computer.
  */
-public class HumanPlayer extends Player{
+public class HumanPlayer extends Player {
     private GridPane grid;
 
     /**
@@ -17,7 +17,7 @@ public class HumanPlayer extends Player{
      * @param grid - GridPane object.
      * @param diskColor - color of the disk.
      */
-    public HumanPlayer(Board.disk d,GridPane grid,Color diskColor) {
+    public HumanPlayer(Board.disk d, GridPane grid, Color diskColor) {
         super(d,diskColor);
         this.grid = grid;
     }

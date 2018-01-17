@@ -1,4 +1,6 @@
-package ReversiGameProject;
+package RevrsiGame;
+
+import Display.ReversiGameController;
 
 import java.util.Vector;
 
@@ -35,7 +37,7 @@ public class ReversiGame {
      * @param step - current step.
      * @param gameController - Controller of the game.
      */
-    public void playOneTurn(Point step,ReversiGameController gameController) {
+    public void playOneTurn(Point step, ReversiGameController gameController) {
         if (!isGameOver()) {
 
             //get a vector of possible points and print it.

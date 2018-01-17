@@ -1,4 +1,4 @@
-package ReversiGameProject;
+package RevrsiGame;
 
 /**
  * A board class that represents the Reversi game board.

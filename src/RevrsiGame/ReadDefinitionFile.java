@@ -1,4 +1,4 @@
-package ReversiGameProject;
+package RevrsiGame;
 
 import java.io.*;
 import java.util.Map;

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox fx:id="root" spacing="10" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="Display.ReversiGameController">
+   <children>
+       <MenuBar prefHeight="39.0" prefWidth="600.0">
+           <menus>
+               <Menu text="File">
+                   <items>
+                       <MenuItem text="Settings" onAction="#openSettings"/>
+                       <MenuItem text="Exit" onAction="#exitGame"/>
+                   </items>
+               </Menu>
+           </menus>
+       </MenuBar>
+       <HBox fx:id="Hbox">
+           <VBox>
+               <children>
+                   <Text fx:id="currentPlayer" translateY="5" translateX="30" >
+                       <font>
+                           <Font name="System Bold" size="13.0" />
+                       </font>
+                   </Text>
+                   <Text fx:id="firstPlayerScore" translateY="7" translateX="30">
+                       <font>
+                           <Font name="System Bold" size="13.0" />
+                       </font>
+                   </Text>
+                   <Text fx:id="secondPlayerScore" translateY="9" translateX="30">
+                       <font>
+                           <Font name="System Bold" size="13.0" />
+                       </font>
+                   </Text>
+               </children>
+           </VBox>
+       </HBox>
+   </children>
+</VBox>

@@ -1,5 +1,6 @@
-package ReversiGameProject;
+package Display;
 
+import RevrsiGame.ReadDefinitionFile;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;

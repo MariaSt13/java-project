@@ -1,5 +1,12 @@
-package ReversiGameProject;
+package Display;
 
+import RevrsiGame.Board;
+import RevrsiGame.GameLogic;
+import RevrsiGame.HumanPlayer;
+import RevrsiGame.Player;
+import RevrsiGame.Point;
+import RevrsiGame.ReversiGame;
+import RevrsiGame.StandardGameLogic;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;

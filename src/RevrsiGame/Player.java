@@ -1,4 +1,4 @@
-package ReversiGameProject;
+package RevrsiGame;
 
 import javafx.scene.paint.Color;
 
@@ -11,11 +11,11 @@ abstract public class Player {
     protected Color diskColor;
 
     /**
-     * constructor.
+     * Constructor.
      * @param d - disk of the player.
      * @param diskColor - color of the disk.
      */
-    public Player(Board.disk d,Color diskColor){
+    public Player(Board.disk d, Color diskColor){
         this.playerDisk = d;
         this.diskColor = diskColor;
     }
