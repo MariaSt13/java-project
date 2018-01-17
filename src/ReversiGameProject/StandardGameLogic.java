@@ -4,17 +4,26 @@ import java.util.Map;
 import java.util.TreeMap;
 import java.util.Vector;
 
-
+/**
+ * This class implements GameLogic and encapsulates
+ * the standard logic of the reversi game.
+ */
 public class StandardGameLogic implements GameLogic{
 
     private Map<Point,Vector<Point>> pointsMap;
 
+    /**
+     * constructor.
+     */
     public StandardGameLogic() {
         pointsMap = new TreeMap<>();
     }
 
     /**
      * The function returns a vector with all possible steps for the player.
+     * @param p - player.
+     * @param b - board.
+     * @return vector of points.
      */
    public Vector<Point> returnValidMoves(Player p , Board b) {
         Board.disk[][] array = b.getArray();
@@ -30,6 +39,16 @@ public class StandardGameLogic implements GameLogic{
         }
         return v;
     }
+
+    /**
+     * The function get a points and check if selecting this point will reverse the opponent disks.
+     * @param player - current player.
+     * @param p - the point that is checked.
+     * @param b - current board.
+     * @param i - index
+     * @param j - index
+     * @return - possible point.
+     */
     private Point ifReverseOpponentDisk(Player player, Point p, Board b, int i, int j) {
         Board.disk[][] array = b.getArray();
         Point currentPoint = p;
@@ -40,9 +59,9 @@ public class StandardGameLogic implements GameLogic{
 
         /*
          * while the point is not outside the boundaries of the matrix and
-         * the point is not empty and not the player color.
+         * the point is not noPlayer and not the player color.
          */
-        while(b.pointIsInRange(point) && array[point.getX()][point.getY()] != Board.disk.empty &&
+        while(b.pointIsInRange(point) && array[point.getX()][point.getY()] != Board.disk.noPlayer &&
                 array[point.getX()][point.getY()] != player.getDisk()){
 
             //if the point is not exist in the vector
@@ -55,9 +74,9 @@ public class StandardGameLogic implements GameLogic{
             point = new Point(x,y);
         }
 
-        //if it is cell empty and in board
+        //if it is cell noPlayer and in board
         if(b.pointIsInRange(point)){
-            if(array[x][y] == Board.disk.empty){
+            if(array[x][y] == Board.disk.noPlayer){
                 //if this point key is already exist in the map.
                 if(pointsMap.containsKey(point)){
                     pointsMap.get(point).addAll(v);
@@ -97,7 +116,7 @@ public class StandardGameLogic implements GameLogic{
                     if( b.pointIsInRange(cuurentNeighbor)){
 
                         //If it is cell of the opposing player
-                        if(array[x+i][y+j] != Board.disk.empty && array[x+i][y+j] != player.getDisk()){
+                        if(array[x+i][y+j] != Board.disk.noPlayer && array[x+i][y+j] != player.getDisk()){
 
                             //if there will be reversion of the opponent's washers
                             Point point = ifReverseOpponentDisk(player,new Point(x,y),b,i,j);

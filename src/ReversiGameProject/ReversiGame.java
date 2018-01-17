@@ -2,109 +2,81 @@ package ReversiGameProject;
 
 import java.util.Vector;
 
+/**
+ * This class runs the game. The game ends when the entire
+ * board is full or when there are no further possible
+ * moves for both sides.
+ */
 public class ReversiGame {
 
     private Board gameBoard;
-    private Player whitePlayer;
-    private Player blackPlayer;
+    private Player secondPlayer;
+    private Player firstPlayer;
     private GameLogic gameLogic;
     private Player hisTurn;
-    private UserInterface userInterface;
 
     /**
-     * This function runs the game.
+     * constructor.
+     * @param gameBoard - the board game.
+     * @param firstPlayer - the first player.
+     * @param secondPlayer - the second player.
+     * @param gameLogic - the logic of the game.
      */
-    public ReversiGame(Board gameBoard, Player blackPlayer, Player whitePlayer, GameLogic gameLogic,
-                       UserInterface display) {
+    public ReversiGame(Board gameBoard, Player firstPlayer, Player secondPlayer, GameLogic gameLogic) {
         this.gameBoard = gameBoard;
-        this.whitePlayer = whitePlayer;
-        this.blackPlayer = blackPlayer;
+        this.secondPlayer = secondPlayer;
+        this.firstPlayer = firstPlayer;
         this.gameLogic = gameLogic;
-        this.hisTurn = this.blackPlayer;
-        this.userInterface = display;
+        this.hisTurn = this.firstPlayer;
     }
 
-    // this function run the game.
+    /**
+     * This function run one turn.
+     * @param step - current step.
+     * @param gameController - Controller of the game.
+     */
     public void playOneTurn(Point step,ReversiGameController gameController) {
-        boolean firstTry = true;
-
-        //print board and current player.
-        printCurrentBoard();
-
         //get a vector of possible points and print it.
         Vector<Point> v = this.gameLogic.returnValidMoves(this.hisTurn, this.gameBoard);
-        if(!v.contains(step)) {
-            return;
+
+        //if the vector is not empty.
+        if(v.size() != 0){
+
+            //check if the step is valid
+            if(!v.contains(step)) {
+                return;
+            }
+            //makes the current player's choice and changes the next player's turn.
+            this.gameLogic.flipCells(this.hisTurn, step, gameBoard,false);
         }
-        //makes the current player's choice and changes the next player's turn.
-        this.gameLogic.flipCells(this.hisTurn, step, gameBoard,false);
 
         changeTurn();
         gameController.draw(this.hisTurn);
+
+        //check if the game is over
         if(isGameOver()){
-            gameOver();
+            gameOver(gameController);
         }
     }
 
     /**
-     * Gets the step from the player.
-     * @param firstTry - true if it is the first try.
-     * @param v vector of points.
-     * @return Point.
+     *  print the winner.
+     * @param controller - game controller.
      */
-    private Point getStep(boolean firstTry, Vector<Point> v){
-        //get input from the player.
-        Point step;
-        do {
-            if(!firstTry){
-                userInterface.invalidInput();
-            }
-            firstTry = false;
-            userInterface.askForMove();
-            step = this.hisTurn.chooseStep(userInterface);
-
-        } while (!step.ifThePointIsInVector(v));
-
-        return step;
-    }
-
-    /**
-     * Prints the current board.
-     */
-    private void printCurrentBoard() {
-        //print board and current player.
-        userInterface.currentBoard(this.gameBoard);
-    }
-
-    // print the final board and the winner.
-    private void gameOver(){
-        printCurrentBoard();
-        userInterface.gameOver();
-        int countWhite = 0;
-        int countBlack = 0;
-        Board.disk[][] array = gameBoard.getArray();
-
+    private void gameOver(ReversiGameController controller){
         //the function checks which player has more discs on the board.
-        for (int i = 1; i < gameBoard.getColSize() ; i++) {
-            for (int j = 1; j < gameBoard.getRowSize(); j++) {
-                if(array[i][j] == blackPlayer.getDisk()){
-                    countBlack++;
-                }
-                else if(array[i][j] == whitePlayer.getDisk()){
-                    countWhite++;
-                }
-            }
-        }
+        int countFirst = this.gameBoard.numOfPlayerDisks(this.firstPlayer.getDisk());
+        int countSecond = this.gameBoard.numOfPlayerDisks(this.secondPlayer.getDisk());
 
         //prints the winning player.
-        if(countBlack > countWhite){
-            userInterface.winner(blackPlayer.getDisk());
+        if(countFirst > countSecond){
+           controller.gameOver(Board.disk.firstPlayer);
         }
-        else if(countBlack < countWhite){
-            userInterface.winner(whitePlayer.getDisk());
+        else if(countFirst < countSecond){
+           controller.gameOver(Board.disk.secondPlayer);
         }
-        else if(countBlack == countWhite){
-            userInterface.draw();
+        else if(countFirst == countSecond){
+           controller.gameOver(Board.disk.noPlayer);
         }
     }
 
@@ -114,7 +86,7 @@ public class ReversiGame {
      * @return boolean.
      */
     public boolean isGameOver() {
-        //if the there is no empty cells return true.
+        //if the there is no noPlayer cells return true.
         if(this.gameBoard.ifBoardIsFull()){
             return true;
         }
@@ -140,32 +112,13 @@ public class ReversiGame {
     }
 
     /**
-     * Prints the possible moves of the player in his turn.
-     * @param v vector of points.
-     * @return bool - if there are possible moves.
-     */
-    boolean printPossibleMoves(Vector<Point> v) {
-        Board.disk c = (this.hisTurn.getDisk());
-        userInterface.yourMove(c);
-
-        //if there is no possible moves.
-        if(v.size() == 0){
-            userInterface.noMoves();
-            return false;
-        }
-        userInterface.possibleMoves(v);
-        return true;
-    }
-
-    /**
      * Switch between the players turn.
      */
     private void changeTurn (){
-        if(this.hisTurn == this.blackPlayer){
-            this.hisTurn = this.whitePlayer;
+        if(this.hisTurn == this.firstPlayer){
+            this.hisTurn = this.secondPlayer;
         } else{
-            this.hisTurn = this.blackPlayer;
+            this.hisTurn = this.firstPlayer;
         }
     }
-
 }

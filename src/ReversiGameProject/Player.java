@@ -2,25 +2,42 @@ package ReversiGameProject;
 
 import javafx.scene.paint.Color;
 
+/**
+ * Player abstract class.
+ * a player can draw his disks.
+ */
 abstract public class Player {
-    protected Board.disk color;
+    protected Board.disk playerDisk;
     protected Color diskColor;
 
-    // the player choose his next move in his turn .
-    abstract Point chooseStep(UserInterface userInterface);
-
-    //contructor.
+    /**
+     * constructor.
+     * @param d - disk of the player.
+     * @param diskColor - color of the disk.
+     */
     public Player(Board.disk d,Color diskColor){
-        this.color = d;
+        this.playerDisk = d;
         this.diskColor = diskColor;
     }
 
-    //get disk
+    /**
+     * @return playerDisk.
+     */
     public Board.disk getDisk() {
-        return this.color;
+        return this.playerDisk;
     }
 
+    /**
+     * draw player disk.
+     * @param cellWidth - width of the cell.
+     * @param cellHeight - height of the cell.
+     * @param row - the row position of the circle
+     * @param col - the col position of the circle
+     */
     public abstract void draw(float cellWidth, float cellHeight,int row,int col);
 
+    /**
+     * @return diskColor - color of the disk.
+     */
     public Color getColor(){ return this.diskColor;}
 }

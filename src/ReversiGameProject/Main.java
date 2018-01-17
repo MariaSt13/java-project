@@ -6,6 +6,9 @@ import javafx.scene.Scene;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+/**
+ * Main class extends Application.
+ */
 public class Main extends Application {
 
     @Override
@@ -20,7 +23,10 @@ public class Main extends Application {
         }
     }
 
-
+    /**
+     * Main function.
+     * @param args - arguments.
+     */
     public static void main(String[] args) {
         launch(args);
     }

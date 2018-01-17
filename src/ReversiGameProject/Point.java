@@ -2,7 +2,71 @@ package ReversiGameProject;
 
 import java.util.Vector;
 
+/**
+ * Point class.
+ * Points represented by x and y value.
+ */
 public class Point implements Comparable{
+
+    private int x;
+    private int y;
+
+    /**
+     * constructor.
+     * @param x - x value of the point
+     * @param y - y value of the point
+     */
+    public Point(int x, int y) {
+        this.x =x;
+        this.y =y;
+    }
+
+    /**
+     * This function gets a vector of points and
+     * returns 'true' if this point is exist in
+     * the vector. else return 'false'.
+     * @param v -  vector of points.
+     * @return boolean.
+     */
+    public boolean ifThePointIsInVector(Vector<Point> v) {
+
+        for (int i = 0; i < v.size(); i++) {
+            int x1 = v.elementAt(i).getX();
+            int y1 = v.elementAt(i).getY();
+
+            if(x == x1 && y ==y1){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * check if the points are equal.
+     * @param p - other point that we are comparing to.
+     * @return return true is the points are equal, false otherwise.
+     */
+    public boolean equals(Object p) {
+        Point other = (Point)p;
+        if ((this.x == other.x) && (this.y == other.y)) {
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * @return - x value of the point
+     */
+    public int getX() {
+        return x;
+    }
+
+    /**
+     * @return - y value of the point
+     */
+    public int getY() {
+        return y;
+    }
 
     @Override
     public int compareTo(Object other) {
@@ -22,51 +86,8 @@ public class Point implements Comparable{
         return  returnVal;
     }
 
-    private int x;
-    private int y;
-
-    public Point(int x, int y) {
-        this.x =x;
-        this.y =y;
-    }
-
-    public int getX() {
-        return x;
-    }
-
-    public int getY() {
-        return y;
-    }
-
-    public boolean ifThePointIsInVector(Vector<Point> v) {
-
-        for (int i = 0; i < v.size(); i++) {
-            int x1 = v.elementAt(i).getX();
-            int y1 = v.elementAt(i).getY();
-
-            if(x == x1 && y ==y1){
-                return true;
-            }
-        }
-        return false;
-    }
-
     @Override
     public String toString() {
         return "(" + x + "," + y +")";
-    }
-
-    /**
-     * check if the points are equal.
-     * @param other - other point that we are comparing to.
-     * @return return true is the points are equal, false otherwise.
-     */
-    // equals -- return true is the points are equal, false otherwise
-    public boolean equals(Object p) {
-        Point other = (Point)p;
-        if ((this.x == other.x) && (this.y == other.y)) {
-            return true;
-        }
-        return false;
     }
 }

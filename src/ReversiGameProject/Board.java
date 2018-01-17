@@ -1,10 +1,17 @@
 package ReversiGameProject;
 
+/**
+ * A board class that represents the Reversi game board.
+ * Each slot in the table can contain one of the following values:
+ * "firstPlayer" A slot of the first Actor.
+ * "secondPlayer" A slot of the second Actor.
+ * Or an "noPlayer" slot.
+ */
 public class Board {
 
     private int rowSize;
     private int colSize;
-    public enum disk {firstPlayer ,secondPlayer , empty }
+    public enum disk {firstPlayer ,secondPlayer , noPlayer}
     private disk[][] array;
 
     /**
@@ -21,7 +28,7 @@ public class Board {
         //Initializes all the cells in the array with a space character.
         for (int i = 1; i < this.rowSize; i++) {
             for (int j = 1 ; j < this.colSize; j++) {
-                array[i][j] = disk.empty;
+                array[i][j] = disk.noPlayer;
             }
         }
 
@@ -39,7 +46,6 @@ public class Board {
      * @param board - the board to copy.
      */
     public Board(Board board){
-
         this.colSize = board.getColSize();
         this.rowSize = board.getRowSize();
         this.array = new disk[rowSize][colSize];
@@ -54,6 +60,13 @@ public class Board {
         }
     }
 
+    /**
+     * The function get a point and return
+     * true if the point is in the board range.
+     * else , return false.
+     * @param p - point to check.
+     * @return - boolean.
+     */
     public boolean pointIsInRange(Point p){
         return p.getX() > 0 && p.getX() < this.rowSize &&
                 p.getY()>0 && p.getY() < this.colSize;
@@ -61,14 +74,14 @@ public class Board {
 
     /**
      * This function checks if the board is full.
-     * If there is no empty cells return true.
+     * If there is no noPlayer cells return true.
      * else return false.
      * @return true or false.
      */
     public boolean ifBoardIsFull(){
         for (int i = 1; i < this.rowSize ; i++) {
             for (int j = 1; j < this.colSize ; j++) {
-                if(array[i][j] == disk.empty){
+                if(array[i][j] == disk.noPlayer){
                     return false;
                 }
             }
@@ -93,16 +106,24 @@ public class Board {
         return count;
     }
 
+    /**
+     * @return rowSize - number of rows.
+     */
     public int getRowSize() {
         return rowSize;
     }
 
+    /**
+     * @return colSize - number of columns.
+     */
     public int getColSize() {
         return colSize;
     }
 
+    /**
+     * @return array - the game matrix.
+     */
     public disk[][] getArray() {
         return array;
     }
-
 }
