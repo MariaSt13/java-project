@@ -9,6 +9,7 @@ import RevrsiGame.ReversiGame;
 import RevrsiGame.StandardGameLogic;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.HPos;
+import javafx.geometry.Pos;
 import javafx.geometry.VPos;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
@@ -68,13 +69,12 @@ public class ReversiBoardController extends GridPane {
      */
     public void draw(ReversiGameController gameController) {
         this.getChildren().clear();
-        this.setStyle("-fx-border-color: Black;-fx-background-color: black");
-        double height = this.getPrefHeight();
-        double width = this.getPrefWidth();
+        int height = (int)this.getPrefHeight();
+        int width = (int)this.getPrefWidth();
 
         //calculate height and width.
-        double cellHeight = height /(double) (board.getRowSize() -1);
-        double cellWidth = width / (double)(board.getColSize() -1);
+        int cellHeight = height / (board.getRowSize() -1);
+        int cellWidth = width / (board.getColSize() -1);
 
         //loop go over board matrix
         for (int i = 1; i < board.getRowSize(); i++) {
@@ -83,8 +83,8 @@ public class ReversiBoardController extends GridPane {
                 Board.disk currentDisk = board.getArray()[i][j];
 
                 //draw cell
-                Rectangle rec  = new Rectangle(cellWidth, cellHeight, Color.LIGHTGREY);
-                //GridPane.setHalignment(rec,HPos.CENTER);
+                Rectangle rec  = new Rectangle(cellWidth-1, cellHeight-1, Color.LIGHTGREY);
+                rec.setStroke(Color.BLACK);
                 this.add(rec, j-1, i-1);
 
                 //if the cell is "noPlayer"
