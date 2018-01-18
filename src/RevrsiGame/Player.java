@@ -34,7 +34,7 @@ abstract public class Player {
      * @param row - the row position of the circle
      * @param col - the col position of the circle
      */
-    public abstract void draw(float cellWidth, float cellHeight,int row,int col);
+    public abstract void draw(double cellWidth, double cellHeight,int row,int col);
 
     /**
      * @return diskColor - color of the disk.

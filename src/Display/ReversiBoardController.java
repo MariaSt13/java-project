@@ -8,6 +8,8 @@ import RevrsiGame.Point;
 import RevrsiGame.ReversiGame;
 import RevrsiGame.StandardGameLogic;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.HPos;
+import javafx.geometry.VPos;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
@@ -45,9 +47,9 @@ public class ReversiBoardController extends GridPane {
                 FXMLLoader(getClass().getResource("ReversiBoard.fxml"));
 
         /*
-        * The Reversi Board Controller sets itself as both
-        * the root and the controller of the FXML document.
-        */
+         * The Reversi Board Controller sets itself as both
+         * the root and the controller of the FXML document.
+         */
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
 
@@ -66,14 +68,13 @@ public class ReversiBoardController extends GridPane {
      */
     public void draw(ReversiGameController gameController) {
         this.getChildren().clear();
-        this.setStyle("-fx-background-color: Black; -fx-alignment: center; " +
-                "-fx-padding: 1; -fx-hgap: 1; -fx-vgap: 1;");
-        int height = (int)this.getPrefHeight();
-        int width = (int)this.getPrefWidth();
+        this.setStyle("-fx-border-color: Black;-fx-background-color: black");
+        double height = this.getPrefHeight();
+        double width = this.getPrefWidth();
 
         //calculate height and width.
-        float cellHeight = height / (board.getRowSize() -1) -1;
-        float cellWidth = width / (board.getColSize() -1) -1;
+        double cellHeight = height /(double) (board.getRowSize() -1);
+        double cellWidth = width / (double)(board.getColSize() -1);
 
         //loop go over board matrix
         for (int i = 1; i < board.getRowSize(); i++) {
@@ -83,6 +84,7 @@ public class ReversiBoardController extends GridPane {
 
                 //draw cell
                 Rectangle rec  = new Rectangle(cellWidth, cellHeight, Color.LIGHTGREY);
+                //GridPane.setHalignment(rec,HPos.CENTER);
                 this.add(rec, j-1, i-1);
 
                 //if the cell is "noPlayer"
@@ -93,7 +95,7 @@ public class ReversiBoardController extends GridPane {
                         game.playOneTurn(new Point(x,y),gameController);
                     });
 
-                //if the cell is not "noPlayer"
+                    //if the cell is not "noPlayer"
                 else {
                     if(currentDisk == Board.disk.firstPlayer){
                         this.firstPlayer.draw(cellWidth-2,

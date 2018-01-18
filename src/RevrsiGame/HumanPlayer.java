@@ -32,7 +32,7 @@ public class HumanPlayer extends Player {
      * @param row - the row position of the circle
      * @param col - the col position of the circle
      */
-    public void draw(float cellWidth, float cellHeight,int row,int col){
+    public void draw(double cellWidth, double cellHeight,int row,int col){
         double radius = Math.min(cellWidth,cellHeight) / 2;
         Circle circle = new Circle(radius,this.diskColor);
         this.grid.add(circle,row,col);
