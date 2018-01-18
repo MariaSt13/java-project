@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="RevrsiGame:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/RevrsiGame_jar</output-path>
+    <root id="archive" name="RevrsiGame.jar">
+      <element id="module-output" name="RevrsiGame" />
+    </root>
+  </artifact>
+</component>
